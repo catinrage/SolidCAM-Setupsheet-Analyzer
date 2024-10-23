@@ -32,6 +32,27 @@ document.querySelector('#input-file').oninput = function () {
   }
 };
 
+document.querySelector('#import-data').oninput = function () {
+  const fileInput = this;
+  const file = fileInput.files[0];
+
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const fileContent = e.target.result;
+    try {
+      const data = JSON.parse(fileContent);
+      for (const key in data) {
+        localStorage.setItem(key, data[key]);
+      }
+      alert('اطلاعات با موفقیت وارد شد');
+    } catch (error) {
+      alert('Invalid JSON file');
+    }
+    this.value = null;
+  };
+  reader.readAsText(file);
+};
+
 document.querySelector('#clear-table').onclick = () => {
   Application.ClearTable();
   localStorage.removeItem('TableData');
@@ -60,8 +81,7 @@ document.querySelector('#button-save-life-span').onclick = () => {
 
 document.body.onkeydown = (e) => {
   if (
-    window.getComputedStyle(document.querySelector('dialog')).display !==
-      'none' &&
+    window.getComputedStyle(document.querySelector('dialog')).display !== 'none' &&
     e.key === 'Enter'
   ) {
     Application.SaveToolData();

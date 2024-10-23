@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/public/favicon.png" />
     <link rel="stylesheet" href="/public/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css"
-    />
+    <link rel="stylesheet" href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" />
     <title>SolidCAM Setupsheet Analyzer</title>
   </head>
   <body>
@@ -81,12 +78,28 @@
           </svg>
           <span>Export Data</span>
         </div>
+        <label for="import-data">
+          <svg
+            style="position: relative; top: 3px"
+            xmlns="http://www.w3.org/2000/svg"
+            width="1.05em"
+            height="1em"
+            viewBox="0 0 25 24"
+          >
+            <path
+              fill="currentColor"
+              d="M2 2.5h8.48l2 2.5H24v16H13v-2h9V7H11.52l-2-2.5H4v8.25H2zm5.05 10.588l4.858 4.914l-4.858 4.914l-1.422-1.406l2.48-2.508H.997v-2h7.11l-2.48-2.508z"
+            />
+          </svg>
+          <span>Import Data</span>
+        </label>
         <div class="scale">
           <div class="div">Scale :</div>
           <input type="text" id="input-scale" min="1" value="1" step="1" />
         </div>
       </div>
       <input type="file" id="input-file" accept=".html" multiple />
+      <input type="file" id="import-data" accept=".json" />
       <div id="table"></div>
     </div>
     <div class="glass"></div>
@@ -131,13 +144,7 @@
           </div>
           <div class="input-wrapper">
             <span>Face-Milling : </span>
-            <input
-              type="text"
-              name="Face-Milling"
-              min="0"
-              value="0"
-              step="10"
-            />
+            <input type="text" name="Face-Milling" min="0" value="0" step="10" />
           </div>
         </div>
         <div class="input-wrapper">
